@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h1>Weather App</h1>
+
+<form method="post" asp-action="GetWeather">
+    <label for="City">City:</label>
+    <input type="text" id="City" name="City" required>
+    <button type="submit">Get Weather</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model.Temperature) && !string.IsNullOrEmpty(Model.Description))
+{
+    <h2>Weather Information:</h2>
+    <p>Temperature: @Model.Temperature</p>
+    <p>Description: @Model.Description</p>
+}
+
+@if (ViewData.ModelState.Count > 0)
+{
+    <div class="validation-summary-errors">
+        <p>Please fix the following errors:</p>
+        <ul>
+            @foreach (var key in ViewData.ModelState.Keys)
+            {
+                foreach (var error in ViewData.ModelState[key].Errors)
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            }
+        </ul>
+    </div>
+}
