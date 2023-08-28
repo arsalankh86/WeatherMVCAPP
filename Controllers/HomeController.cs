@@ -36,7 +36,7 @@ namespace WeatherMVCAPP.Controllers
             var apiKey = _configuration["OpenWeatherMap:ApiKey"];
             var httpClient = _httpClientFactory.CreateClient();
 
-            var response = await httpClient.GetAsync($"http://api.openweathermap.org/data/2.5/weather?q={weatherInfo.City}&appid={apiKey}");
+            var response = await httpClient.GetAsync($"http://api.openweathermap.org/data/2.5/weather?q={weatherInfo.City}&appid=527eff5a2f5ed77af70f871090cf63e7");
             if (response.IsSuccessStatusCode)
             {
                 var contentStream = await response.Content.ReadAsStreamAsync();
